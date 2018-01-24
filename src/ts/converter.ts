@@ -1,12 +1,8 @@
-const targetValue = `1	2	3
-4	5	6`
-
 export const converter = (value: string): string[][] => {
-  return value.split('\n').map((elem) => {
+  const rows = value.split('\n')
+  if (rows.length === 1) return []
+  
+  return rows.map((elem) => {
     return elem.split('\t')
   })
 }
-
-console.log(
-  converter(targetValue)
-)
