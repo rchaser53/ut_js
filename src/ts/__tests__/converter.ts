@@ -23,4 +23,11 @@ describe("converter", () => {
     expect(converter(input)).toEqual(["1"]);
   });
 
+  test("ignore empty row", async () => {
+    const input = `1
+		2
+		
+		3`;
+    expect(converter(input)).toEqual(["1", "2", "3"]);
+  });
 });
