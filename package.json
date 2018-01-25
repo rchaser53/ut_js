@@ -22,7 +22,6 @@
     "rimraf": "^2.6.2",
     "typescript": "^2.6.2"
   },
-  "pre-commit": ["prettier"],
   "jest": {
     "moduleFileExtensions": ["ts", "js"],
     "transform": {
