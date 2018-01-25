@@ -1,8 +1,10 @@
-export const converter = (value: string): string[][] => {
-  const rows = value.split('\n')
-  if (rows.length === 1) return []
+export const converter = (value: string): string[] => {
+  const rows = value.split('\n');
+
+  return rows.reduce<string[]>((stack, next) => {
+    return next === ''
+            ? stack
+            : stack.concat(next.split('\t'))
+  }, []);
   
-  return rows.map((elem) => {
-    return elem.split('\t')
-  })
 }
