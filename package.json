@@ -7,8 +7,8 @@
     "start": "npm run tsc && node src/js/converter.js",
     "pretsc": "rimraf dest",
     "tsc": "tsc -p .",
-    "prettier":
-      "prettier --write \"**/*.{md,js,ts,json}\" && git add . && git status",
+    "prettier": "prettier --write \"**/*.{md,js,ts,json}\" && git add . && git status",
+    "iconfonts": "icon-font-generator --csstp cssTemplate.hbs ./font/*.svg -o ./dest/font",
     "test": "jest --runInBand --coverage"
   },
   "keywords": [],
@@ -23,11 +23,22 @@
     "typescript": "^2.6.2"
   },
   "jest": {
-    "moduleFileExtensions": ["ts", "js"],
+    "moduleFileExtensions": [
+      "ts",
+      "js"
+    ],
     "transform": {
       "^.+\\.ts$": "<rootDir>/preprocessor.js"
     },
-    "testPathIgnorePatterns": ["<rootDir>/node_modules/", "dest"],
-    "testMatch": ["**/__tests__/*.(ts|js)"]
+    "testPathIgnorePatterns": [
+      "<rootDir>/node_modules/",
+      "dest"
+    ],
+    "testMatch": [
+      "**/__tests__/*.(ts|js)"
+    ]
+  },
+  "dependencies": {
+    "icon-font-generator": "^1.1.1"
   }
 }
