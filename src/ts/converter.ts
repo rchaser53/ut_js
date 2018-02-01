@@ -1,15 +1,20 @@
 export const converter = (value: string): string[] => {
-  const rows = value.split("\n");
+  const rows = value.split("\n")
 
   const retValue = rows.reduce<string[]>((stack, next) => {
-    if (isEmptyRow(next)) return stack;
-    return next === ""
+    const trimedNext = trimStartAndEndWhiteSpace(next)
+    if (isEmptyRow(trimedNext)) return stack;
+    return trimedNext === ""
       ? stack
-      : stack.concat(next.split("\t").reduce(removeEmptyReduce, []));
+      : stack.concat(trimedNext.split("\t").reduce(removeEmptyReduce, []));
   }, []);
 
   return trimLastLine(retValue);
 };
+
+const trimStartAndEndWhiteSpace = (value: string): string => {
+  return value.replace(/^\s*/, '').replace(/\s*$/, '')
+}
 
 const removeEmptyReduce = (stack: string[], next: string): string[] => {
   return next === "" ? stack : stack.concat([next]);

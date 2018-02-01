@@ -34,7 +34,13 @@ describe("converter", () => {
   test("distinguish space from tab", async () => {
     const input = `	1	2 3	4 	
 5`;
-    expect(converter(input)).toEqual(["1", "2 3", "4 ", "5"]);
+    expect(converter(input)).toEqual(["1", "2 3", "4", "5"]);
+  });
+
+  test("remove unnecessary space", async () => {
+    const input = ` 1	2 3	4 	
+5`;
+    expect(converter(input)).toEqual(["1", "2 3", "4", "5"]);
   });
 
 });
